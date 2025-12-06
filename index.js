@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const path = require("path");
+const { v4: uuidv4 } = require('uuid');
 
 app.use(express.urlencoded({ extended: true }));
 app.set("view engine", "ejs");
@@ -10,14 +11,17 @@ app.use(express.static(path.join(__dirname, "public/js")));
 
 let posts = [
     {
+        id: "1a",
         username: "amit",
         content: "I love coding",
     },
     {
+        id: uuidv4(),
         username: "arpit",
         content: "I am learning ai ml",
     },
     {
+        id: uuidv4(),
         username: "Akash",
         content: "I am new to coding",
     }
@@ -35,11 +39,19 @@ app.get("/posts/new", (req, res) => {
 
 app.post("/posts", (req, res) => {
     let { username, content } = req.body;
-    posts.push({ username, content });
+    let id = uuidv4();
+    posts.push({ id, username, content });
     res.redirect("/posts");
 })
 
-
+app.get("/posts/:id", (req, res) => {
+    let { id } = req.params;
+    if (!posts.find((p) => id === p.id)) {
+        res.send("Invalid post id");
+    }
+    let post = posts.find((p) => id === p.id);
+    res.render("show.ejs", { post });
+})
 
 app.listen(port, () => {
     console.log(`App is listining at port ${port}`);
