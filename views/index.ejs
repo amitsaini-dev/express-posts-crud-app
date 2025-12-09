@@ -20,6 +20,9 @@
             </h4>
             <a href="/posts/<%= post.id %>">See in Detail</a>
             <a href="/posts/<%= post.id %>/edit">Edit</a>
+            <form class="inline-form" method="post" action="/posts/<%= post.id %>?_method=DELETE">
+                <button class="delete-btn" type="submit">Delete</button>
+            </form>
         </div>
         <% } %>
             <a href="/posts/new" class="new-post-link">Add new Post</a>
