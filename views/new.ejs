@@ -5,18 +5,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Post</title>
+    <link rel="stylesheet" href="/style.css">
 </head>
+
 
 <body>
     <form action="/posts" method="post">
         <p>
-            <label for="username">Username:</label><br>
-            <input type="text" id="username" name="username" placeholder="Enter username">
+            <label for="username">Username: </label><br>
+            <input type="text" id="username" name="username" placeholder="Enter username" required>
         </p>
 
         <p>
             <label for="content">Content:</label><br>
-            <textarea id="content" name="content" placeholder="Enter content" rows="3" cols="35"></textarea>
+            <textarea id="content" name="content" placeholder="Enter content" rows="3" cols="35" required></textarea>
         </p>
 
         <p>
