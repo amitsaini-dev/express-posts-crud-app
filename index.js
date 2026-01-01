@@ -43,6 +43,9 @@ app.get("/posts/new", (req, res) => {
 app.post("/posts", (req, res) => {
     let { username, content } = req.body;
     let id = uuidv4();
+    if (!username.trim() || !content.trim()) {
+        return res.send("Fields cannot be empty!");
+    }
     posts.push({ id, username, content });
     res.redirect("/posts");
 })
