@@ -33,7 +33,7 @@ let posts = [
 const port = 8080;
 
 app.get("/posts", (req, res) => {
-    res.render("index.ejs", { posts });
+    res.render("index.ejs", { posts, totalPosts: posts.length });
 })
 
 app.get("/posts/new", (req, res) => {
